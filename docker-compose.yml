@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  database:
+    image: postgres
+    container_name: database_studio
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=studio_user
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=studio_db
+      - POSTGRES_HOST_AUTH_METHOD=md5
+    volumes:
+      - pgdata:/data/postgres
+
+volumes:
+  pgdata:
+    driver: local
